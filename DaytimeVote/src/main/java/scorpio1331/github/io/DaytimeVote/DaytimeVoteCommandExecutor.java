@@ -13,6 +13,7 @@ public class DaytimeVoteCommandExecutor implements CommandExecutor
         this.plugin = plugin;
     }
 
+    //When a command is executed loop through our commands to find match, if it matches then validate the command and run it.
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         for (Commands command: Commands.values()){

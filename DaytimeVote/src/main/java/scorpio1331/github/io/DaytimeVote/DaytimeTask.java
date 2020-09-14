@@ -14,6 +14,7 @@ public class DaytimeTask implements Runnable {
         this.overWorld = overWorld;
     }
 
+    //Dispatch event to any DayNightEvent listeners
     @Override
     public void run() {
         //plugin.getServer().broadcastMessage("DayTimeVote: Checking Time => " + (overWorld.getTime() >= nightTime ? "It's Nighttime" : "It's Daytime") + " (" + overWorld.getTime() + " ticks).");
