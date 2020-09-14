@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DaytimeVote:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DaytimeVote_jar</output-path>
+    <root id="archive" name="DaytimeVote.jar">
+      <element id="module-output" name="DaytimeVote" />
+    </root>
+  </artifact>
+</component>
