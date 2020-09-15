@@ -20,7 +20,7 @@ public class DaytimeVoteCommandExecutor implements CommandExecutor
             if (cmd.getName().equalsIgnoreCase(command.GetName())) {
                 ICommand activatedCommand = command.GetCommand();
                 if (!activatedCommand.ValidateCommand(sender, cmd, label, args, plugin)) {
-                     return false;
+                    return false;
                 }
                 return activatedCommand.PerformCommand(sender, cmd, label, args, plugin);
             }

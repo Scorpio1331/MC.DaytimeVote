@@ -2,6 +2,8 @@ package scorpio1331.github.io.DaytimeVote;
 
 import org.bukkit.World;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -20,14 +22,19 @@ public final class DaytimeVote extends JavaPlugin implements IDebuggablePlugin
         //Create daytime event listener
         DaytimeListener daytimeListener = new DaytimeListener(this);
 
+        TabCompleter tabCompleter = new CommandTabCompleter();
+
         //Run through commands
         for (Commands command: Commands.values()){
-            command.GetCommand().SetPlugin(this);
+            final ICommand cmd = command.GetCommand();
+            cmd.SetPlugin(this);
             //Set executor for command
-            this.getCommand(command.GetName()).setExecutor(commandExecutor);
+            final PluginCommand pluginCommand = this.getCommand(cmd.GetName());
+            pluginCommand.setExecutor(commandExecutor);
+            pluginCommand.setTabCompleter(tabCompleter);
 
-            if (command.GetCommand() instanceof IHandlesDayNightCycle) {
-                daytimeListener.AddEventListener((IHandlesDayNightCycle) command.GetCommand());
+            if (cmd instanceof IHandlesDayNightCycle) {
+                daytimeListener.AddEventListener((IHandlesDayNightCycle) cmd);
             }
         }
 

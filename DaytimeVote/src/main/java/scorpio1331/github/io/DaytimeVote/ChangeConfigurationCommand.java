@@ -5,8 +5,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ChangeConfigurationCommand implements ICommand
 {
@@ -156,6 +159,43 @@ public class ChangeConfigurationCommand implements ICommand
 
         this.plugin.saveConfig();
         return true;
+    }
+
+    @Override
+    public List<String> TabComplete(String[] args) {
+        if (args.length == 1) {
+            return AcceptedArguments.AcceptableArguments.stream().filter(a -> a.toLowerCase().startsWith(args[0].toLowerCase())).collect(Collectors.toList());
+        }
+        if (args.length >= 2) {
+            String commandArg = args[0];
+
+            if (commandArg.equalsIgnoreCase(AcceptedArguments.Query)) {
+                return new ArrayList<>();
+            }
+
+            if (args.length == 2 && args[1].isEmpty())
+            {
+                if (commandArg.equalsIgnoreCase(AcceptedArguments.PollingTicks)) {
+                    return Collections.singletonList("Number of Ticks");
+                }
+
+                return Collections.singletonList("Required Votes");
+            }
+
+            if (!commandArg.equalsIgnoreCase(AcceptedArguments.PollingTicks)) {
+                if (args.length == 3 && args[2].isEmpty())
+                {
+                    return Arrays.asList("True", "False");
+                }
+
+                if (args.length == 4 && commandArg.equalsIgnoreCase(AcceptedArguments.All) && args[3].isEmpty())
+                {
+                    return Arrays.asList("True", "False");
+                }
+            }
+
+        }
+        return new ArrayList<>();
     }
 
     private void SetConfigSettings(JavaPlugin plugin, CommandSender sender, int requireCount, boolean isAbsolute, String requiredCountPath, String isAbsolutePath, String time) {

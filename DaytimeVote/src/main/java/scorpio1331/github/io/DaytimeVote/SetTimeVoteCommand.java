@@ -1,11 +1,13 @@
 package scorpio1331.github.io.DaytimeVote;
 
 import org.bukkit.World;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCycle
 {
@@ -52,7 +54,7 @@ public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCy
     protected abstract String GetIsAbsolutePath();
 
     @Override
-    public Boolean ValidateCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args, JavaPlugin plugin) {
+    public Boolean ValidateCommand(CommandSender sender, Command cmd, String label, String[] args, JavaPlugin plugin) {
         if (!(sender instanceof Player))
         {
             sender.sendMessage("This command can only be run by a player.");
@@ -89,7 +91,7 @@ public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCy
     }
 
     @Override
-    public Boolean PerformCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args, JavaPlugin plugin) {
+    public Boolean PerformCommand(CommandSender sender, Command cmd, String label, String[] args, JavaPlugin plugin) {
         if (overWorld == null)
         {
             overWorld = Utils.GetWorldByEnvironment(plugin, World.Environment.NORMAL);
@@ -166,6 +168,15 @@ public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCy
         }
 
         return true;
+    }
+
+    @Override
+    public List<String> TabComplete(String[] args) {
+        if (args.length == 1) {
+            return AcceptedArguments.AcceptableArguments.stream().filter(a -> a.toLowerCase().startsWith(args[0].toLowerCase())).collect(Collectors.toList());
+        }
+
+        return new ArrayList<>();
     }
 
     @Override
