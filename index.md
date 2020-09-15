@@ -24,7 +24,6 @@ Players can query whether there is an on-going vote and how many votes it has by
 > _/Dayplease Query_
 <br/>_/Nightplease Query_
 
-
 ### Debugging
 Players with the _daytimevote.canDebug_ permission can enable / disable the plugins debug mode with the command **DebugDaytimevote** (_or /ddv_).
 When debug mode is enabled debug messages will be sent to players with the _daytimevote.canDebug_ permission as well as the console.
@@ -33,6 +32,15 @@ When debug mode is enabled debug messages will be sent to players with the _dayt
 
 Players with permission can query whether debugging is enabled by typing the following:
 > _/DebugDaytimevote Query_
+
+### Modifying the config
+Players with the _daytimevote.canChangeConfig_ permission can modify the plugin's config file with the command **changeDaytimeVoteConfig** (_or /cdvc_).
+Players can change the calculation used to determine how many players are required to pass a vote or explicitly set the number.
+#### To modify the number of required votes for daytime / night-time
+> _/changeDaytimeVoteConfig Day_ **or** _/changeDaytimeVoteConfig Night_ **or** _/DebugDaytimevote All_
+
+Players with permission can query the currently saved settings by typing the following:
+> _/changeDaytimeVoteConfig Query_
 
 ### Permissions
 Below is a list of permissions and what they are required for:
@@ -45,9 +53,12 @@ Below is a list of permissions and what they are required for:
 - _daytimevote.canDebug_
   - Allows players to enable / disable DaytimeVote debugging mode
   - Defaults to players with operator status (_op_)
+- _daytimevote.canChangeConfig_
+  - Allows players to modify the DaytimeVote config
+  - Defaults to players with operator status (_op_)
 
 ### Current Release
-The current release is [Version 2.2](https://github.com/Scorpio1331/MC.DaytimeVote/releases/latest)
+The current release is [Version 3.0](https://github.com/Scorpio1331/MC.DaytimeVote/releases/latest)
 
 View other releases [here](https://github.com/Scorpio1331/MC.DaytimeVote/releases)
 
