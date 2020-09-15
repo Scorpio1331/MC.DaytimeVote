@@ -37,7 +37,7 @@ Players with permission can query whether debugging is enabled by typing the fol
 Players with the _daytimevote.canChangeConfig_ permission can modify the plugin's config file with the command **changeDaytimeVoteConfig** (_or /cdvc_).
 Players can change the calculation used to determine how many players are required to pass a vote or explicitly set the number.
 #### To modify the number of required votes for daytime / night-time
-> _/changeDaytimeVoteConfig Day_ **or** _/changeDaytimeVoteConfig Night_ **or** _/DebugDaytimevote All_
+> _/changeDaytimeVoteConfig Day_ **or** _/changeDaytimeVoteConfig Night_ **or** _/changeDaytimeVoteConfig All_
 
 Players with permission can query the currently saved settings by typing the following:
 > _/changeDaytimeVoteConfig Query_
