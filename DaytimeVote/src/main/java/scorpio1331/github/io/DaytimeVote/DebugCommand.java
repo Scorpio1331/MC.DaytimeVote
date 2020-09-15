@@ -19,12 +19,12 @@ public class DebugCommand implements ICommand {
     private IDebuggablePlugin plugin;
 
     @Override
-    public String getName() {
+    public String GetName() {
         return "debugDaytimeVote";
     }
 
     @Override
-    public void setPlugin(JavaPlugin plugin) {
+    public void SetPlugin(JavaPlugin plugin) {
         if (plugin instanceof IDebuggablePlugin) {
             this.plugin = (IDebuggablePlugin) plugin;
         }
@@ -53,7 +53,7 @@ public class DebugCommand implements ICommand {
 
         if (args.length == 0)
         {
-            sender.sendMessage(String.format("This command requires an argument of '%s', '%s' or '%s'.", AcceptedArguments.Enable, AcceptedArguments.Disable, AcceptedArguments.Query));
+            sender.sendMessage(String.format("This command requires an argument of '%s'.", Utils.GetListOfAvailableCommandsText(AcceptedArguments.AcceptableArguments)));
             return false;
         }
         else if (args.length > 1)
@@ -65,7 +65,7 @@ public class DebugCommand implements ICommand {
         final String givenArg = args[0];
         if (AcceptedArguments.AcceptableArguments.stream().noneMatch(givenArg::equalsIgnoreCase))
         {
-            sender.sendMessage(String.format("This command only accepts an argument of '%s', '%s' or '%s'.", AcceptedArguments.Enable, AcceptedArguments.Disable, AcceptedArguments.Query));
+            sender.sendMessage(String.format("This command only accepts an argument of '%s'.", Utils.GetListOfAvailableCommandsText(AcceptedArguments.AcceptableArguments)));
             return false;
         }
 
@@ -75,7 +75,7 @@ public class DebugCommand implements ICommand {
     @Override
     public Boolean PerformCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args, JavaPlugin plugin) {
         if (this.plugin == null) {
-            setPlugin(plugin);
+            SetPlugin(plugin);
         }
         if (this.plugin == null) {
             return false;

@@ -1,0 +1,9 @@
+daytimePollingTicks: 1200
+numberOfPlayersRequiredForVote:
+  daytime: 3
+  daytimeValueIsAbsolute: false
+  nighttime: 4
+  nighttimeValueIsAbsolute: false
+  all: 2
+  allValueIsAbsolute: true
+  useAll: false

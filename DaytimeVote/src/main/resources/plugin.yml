@@ -24,15 +24,29 @@ commands:
     aliases: ddv
     permission: daytimevote.canDebug
     permission-message: "You don't have permission to use this command!"
+  changeDaytimeVoteConfig:
+    description: modify the DaytimeVote config.
+    usage: "Usage: '/<command>' '[Day | Night] [Required Votes] [Is Absolute]' to modify voting config for [Day | Night],
+     where [Is Absolute] is whether the [Required Votes] number is the number of players required (if true) or a divider of the number of players in the OverWorld (if false).
+     Use '/<command>' 'All [Required Votes] [Is Absolute] [Use All]' to modify voting config for both Day and Night.
+     Use '/<command>' 'Query' to show the current config settings.
+     Use '/<command>' 'DaytimePollingTicks [Number of Ticks]' to modify the Daytime Poller's tick schedule."
+    aliases: cdvc
+    permission: daytimevote.canChangeConfig
+    permission-message: "You don't have permission to use this command!"
 permissions:
   daytimevote.*:
     description: Gives access to all DaytimeVote commands.
     default: op
     children:
       daytimevote.canDebug: true
+      daytimevote.canChangeConfig: true
       daytimevote.canVote: true
   daytimevote.canDebug:
     description: Allows user to enable / disable DaytimeVote debugging mode.
+    default: op
+  daytimevote.canChangeConfig:
+    description: Allows user to modify the DaytimeVote config.
     default: op
   daytimevote.canVote:
     description: Allows user to start and participate in DaytimeVote votes for daytime / nighttime.

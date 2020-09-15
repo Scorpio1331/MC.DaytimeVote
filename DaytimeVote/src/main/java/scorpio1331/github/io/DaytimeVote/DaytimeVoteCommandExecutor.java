@@ -17,8 +17,8 @@ public class DaytimeVoteCommandExecutor implements CommandExecutor
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         for (Commands command: Commands.values()){
-            if (cmd.getName().equalsIgnoreCase(command.getName())) {
-                ICommand activatedCommand = command.getCommand();
+            if (cmd.getName().equalsIgnoreCase(command.GetName())) {
+                ICommand activatedCommand = command.GetCommand();
                 if (!activatedCommand.ValidateCommand(sender, cmd, label, args, plugin)) {
                      return false;
                 }

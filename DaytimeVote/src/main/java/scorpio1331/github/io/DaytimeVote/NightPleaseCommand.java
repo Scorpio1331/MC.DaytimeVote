@@ -2,24 +2,41 @@ package scorpio1331.github.io.DaytimeVote;
 
 public class NightPleaseCommand extends SetTimeVoteCommand
 {
-    public NightPleaseCommand() {
-        name = "nightplease";
-        timeName = "Night";
-        setTime = 13000;
+    @Override
+    public String GetName() {
+        return "nightplease";
     }
+
+    @Override
+    public String GetTimeName() {
+        return "Night";
+    }
+
+    @Override
+    protected long GetSetTime() {
+        return 13000;
+    }
+
+    @Override
+    protected String GetRequiredCountPath() {
+        return ConfigurationSettings.NumberOfPlayersRequiredForVote.Nighttime;
+    }
+
+    @Override
+    protected String GetIsAbsolutePath() { return ConfigurationSettings.NumberOfPlayersRequiredForVote.NighttimeValueIsAbsolute;  }
 
     @Override
     public void HandleDaytimeEvent(DayNightEvent event) {
         if (event.isNight()) {
-            setIsEnabled(false);
-            disabledReason = String.format("It is already %s", timeName);
+            SetIsEnabled(false);
+            disabledReason = String.format("It is already %s", GetTimeName());
 
-            if (isDay && getPlayerVotes() != null && getPlayerVotes().size() > 0) {
+            if (isDay && GetPlayerVotes() != null && GetPlayerVotes().size() > 0) {
                 ResetVote();
             }
         }
         else {
-            setIsEnabled(true);
+            SetIsEnabled(true);
         }
         super.HandleDaytimeEvent(event);
     }

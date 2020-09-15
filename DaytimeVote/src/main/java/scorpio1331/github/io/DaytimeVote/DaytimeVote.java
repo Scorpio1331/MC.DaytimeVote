@@ -11,6 +11,10 @@ public final class DaytimeVote extends JavaPlugin implements IDebuggablePlugin
 
     @Override
     public void onEnable() {
+        //Create config file if it doesnt exist
+        this.saveDefaultConfig();
+        this.reloadConfig();
+
         isInDebugMode = false;
         CommandExecutor commandExecutor = new DaytimeVoteCommandExecutor(this);
         //Create daytime event listener
@@ -18,18 +22,19 @@ public final class DaytimeVote extends JavaPlugin implements IDebuggablePlugin
 
         //Run through commands
         for (Commands command: Commands.values()){
-            command.getCommand().setPlugin(this);
+            command.GetCommand().SetPlugin(this);
             //Set executor for command
-            this.getCommand(command.getName()).setExecutor(commandExecutor);
+            this.getCommand(command.GetName()).setExecutor(commandExecutor);
 
-            if (command.getCommand() instanceof IHandlesDayNightCycle) {
-                daytimeListener.AddEventListener((IHandlesDayNightCycle) command.getCommand());
+            if (command.GetCommand() instanceof IHandlesDayNightCycle) {
+                daytimeListener.AddEventListener((IHandlesDayNightCycle) command.GetCommand());
             }
         }
 
+        long pollingTicks = this.getConfig().getLong("daytimePollingTicks");
         BukkitScheduler scheduler = getServer().getScheduler();
-        //Schedule DaytimeTask to run 60 seconds (1200 / 20), starting immediately.
-        scheduler.scheduleSyncRepeatingTask(this, new DaytimeTask(this, Utils.GetWorldByEnvironment(this, World.Environment.NORMAL)), 0L, 1200L/4);
+        //Schedule DaytimeTask to run every set amount of ticks, default is: 60 seconds (1200 / 20). Starting immediately.
+        scheduler.scheduleSyncRepeatingTask(this, new DaytimeTask(this, Utils.GetWorldByEnvironment(this, World.Environment.NORMAL)), 0L, pollingTicks);
     }
 
     @Override

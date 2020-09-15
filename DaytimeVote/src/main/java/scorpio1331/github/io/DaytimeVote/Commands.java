@@ -4,7 +4,8 @@ public enum Commands
 {
     DayPlease(new DayPleaseCommand()),
     NightPlease(new NightPleaseCommand()),
-    Debug(new DebugCommand());
+    Debug(new DebugCommand()),
+    ChangeConfig(new ChangeConfigurationCommand());
 
     private ICommand command;
 
@@ -12,11 +13,11 @@ public enum Commands
         this.command = command;
     }
 
-    public ICommand getCommand() {
+    public ICommand GetCommand() {
         return command;
     }
 
-    public String getName() {
-        return command.getName();
+    public String GetName() {
+        return command.GetName();
     }
 }
