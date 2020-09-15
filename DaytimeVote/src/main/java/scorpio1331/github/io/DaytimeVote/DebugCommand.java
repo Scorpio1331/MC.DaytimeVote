@@ -44,6 +44,11 @@ public class DebugCommand implements Command {
                 sender.sendMessage(player.getDisplayName() + " is not online!");
                 return false;
             }
+
+            if (!player.hasPermission(Permissions.CanDebug.getPermissionName())) {
+                sender.sendMessage("You do not have permission to use this command!");
+                return false;
+            }
         }
 
         if (args.length == 0)

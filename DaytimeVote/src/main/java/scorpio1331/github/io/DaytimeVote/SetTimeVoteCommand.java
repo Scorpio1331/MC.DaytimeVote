@@ -67,6 +67,11 @@ public abstract class SetTimeVoteCommand implements Command, IHandlesDayNightCyc
                 return false;
             }
 
+            if (!player.hasPermission(Permissions.CanVote.getPermissionName())) {
+                sender.sendMessage("You do not have permission to use this command!");
+                return false;
+            }
+
             if (args.length > 1)
             {
                 sender.sendMessage("Too many arguments!");

@@ -2,12 +2,32 @@ name: DaytimeVote
 main: scorpio1331.github.io.DaytimeVote.DaytimeVote
 version: 1.0.0
 commands:
-  daypls:
+  Daypls:
     description: Starts or contributes a vote for daytime.
-    usage: "Usage: '/daypls' to start a vote for daytime, or /daypls yes/no to add your vote"
-  nightpls:
+    usage: "Usage: '/Daypls' to start a vote for daytime, or /Daypls yes/no to add your vote"
+    permission: daytimevote.canVote
+    permission-message: "You don't have permission to use this command!"
+  Nightpls:
     description: Starts or contributes a vote for nighttime.
-    usage: "Usage: '/nightpls' to start a vote for nighttime, or /nightpls yes/no to add your vote"
+    usage: "Usage: '/Nightpls' to start a vote for nighttime, or /Nightpls yes/no to add your vote"
+    permission: daytimevote.canVote
+    permission-message: "You don't have permission to use this command!"
   debugDaytimeVote:
     description: Enables or Disables DaytimeVote debugging.
     usage: "Usage: '/debugDaytimeVote' 'Enable' to enable debugging, 'Disable' to disable debugging and 'Query' to check if debugging is currently active."
+    permission:
+      daytimevote.canDebug
+    permission-message: "You don't have permission to use this command!"
+permissions:
+  daytimevote.*:
+    description: Gives access to all DaytimeVote commands.
+    default: op
+    children:
+      daytimevote.canDebug: true
+      daytimevote.canVote: true
+  daytimevote.canDebug:
+    description: Allows user to enable / disable DaytimeVote debugging mode.
+    default: op
+  daytimevote.canVote:
+    description: Allows user to start and participate in DaytimeVote votes for daytime / nighttime.
+    default: not op
