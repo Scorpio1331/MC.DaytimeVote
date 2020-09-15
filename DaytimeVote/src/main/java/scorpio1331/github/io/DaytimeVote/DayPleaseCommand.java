@@ -3,7 +3,7 @@ package scorpio1331.github.io.DaytimeVote;
 public class DayPleaseCommand extends SetTimeVoteCommand
 {
     public DayPleaseCommand() {
-        name = "daypls";
+        name = "dayplease";
         timeName = "Day";
         setTime = 0;
     }

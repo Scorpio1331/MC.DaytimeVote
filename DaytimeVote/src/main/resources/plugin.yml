@@ -1,22 +1,28 @@
 name: DaytimeVote
 main: scorpio1331.github.io.DaytimeVote.DaytimeVote
-version: 1.0.0
+version: "2.2"
+description: "Plugin to allow players to vote on setting time to day or night."
+api-version: "1.16"
+author: "scorpio1331"
+website: "https://scorpio1331.github.io/MC.DaytimeVote/"
 commands:
-  Daypls:
+  dayplease:
     description: Starts or contributes a vote for daytime.
-    usage: "Usage: '/Daypls' to start a vote for daytime, or /Daypls yes/no to add your vote"
+    usage: "Usage: '/<command>' to start a vote for daytime, or /<command> [Yes | No] to add your vote"
+    aliases: daypls
     permission: daytimevote.canVote
     permission-message: "You don't have permission to use this command!"
-  Nightpls:
+  nightplease:
     description: Starts or contributes a vote for nighttime.
-    usage: "Usage: '/Nightpls' to start a vote for nighttime, or /Nightpls yes/no to add your vote"
+    usage: "Usage: '/<command>' to start a vote for nighttime, or /<command> [Yes | No] to add your vote"
+    aliases: nightpls
     permission: daytimevote.canVote
     permission-message: "You don't have permission to use this command!"
   debugDaytimeVote:
     description: Enables or Disables DaytimeVote debugging.
-    usage: "Usage: '/debugDaytimeVote' 'Enable' to enable debugging, 'Disable' to disable debugging and 'Query' to check if debugging is currently active."
-    permission:
-      daytimevote.canDebug
+    usage: "Usage: '/<command>' 'Enable' to enable debugging, 'Disable' to disable debugging and 'Query' to check if debugging is currently active."
+    aliases: ddv
+    permission: daytimevote.canDebug
     permission-message: "You don't have permission to use this command!"
 permissions:
   daytimevote.*:
