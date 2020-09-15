@@ -13,7 +13,7 @@ Players can vote from any world and can change their vote if they change their m
 Players can vote during the day to set it to night-time.
 Voting starts when the first player activates the command **Nightplease** (_or Nightpls_) and will reset when it next becomes night-time.
 #### To start a vote simply type
-> _/Nightplease **or** _/Nightplease Yes_
+> _/Nightplease_ **or** _/Nightplease Yes_
 
 Just like the Daytime vote, players can vote from any world and can change their vote if they change their mind.
 > _/Nightplease No_
