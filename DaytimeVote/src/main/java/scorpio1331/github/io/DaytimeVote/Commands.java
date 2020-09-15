@@ -2,7 +2,9 @@ package scorpio1331.github.io.DaytimeVote;
 
 public enum Commands
 {
-    DayPlease(new DayPleaseCommand());
+    DayPlease(new DayPleaseCommand()),
+    NightPlease(new NightPleaseCommand()),
+    Debug(new DebugCommand());
 
     private Command command;
 

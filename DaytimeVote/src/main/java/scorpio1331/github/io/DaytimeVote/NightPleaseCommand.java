@@ -1,20 +1,20 @@
 package scorpio1331.github.io.DaytimeVote;
 
-public class DayPleaseCommand extends SetTimeVoteCommand
+public class NightPleaseCommand extends SetTimeVoteCommand
 {
-    public DayPleaseCommand() {
-        name = "daypls";
-        timeName = "Day";
-        setTime = 0;
+    public NightPleaseCommand() {
+        name = "nightpls";
+        timeName = "Night";
+        setTime = 13000;
     }
 
     @Override
     public void HandleDaytimeEvent(DayNightEvent event) {
-        if (event.isDay()) {
+        if (event.isNight()) {
             setIsEnabled(false);
             disabledReason = String.format("It is already %s", timeName);
 
-            if (!isDay && getPlayerVotes() != null && getPlayerVotes().size() > 0) {
+            if (isDay && getPlayerVotes() != null && getPlayerVotes().size() > 0) {
                 ResetVote();
             }
         }

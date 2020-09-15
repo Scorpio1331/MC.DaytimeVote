@@ -8,6 +8,7 @@ public class DaytimeTask implements Runnable {
     private final JavaPlugin plugin;
     private final World overWorld;
     private final long nightTime = 13000;
+    private boolean isDay;
 
     public DaytimeTask(JavaPlugin plugin, World overWorld) {
         this.plugin = plugin;
@@ -17,7 +18,14 @@ public class DaytimeTask implements Runnable {
     //Dispatch event to any DayNightEvent listeners
     @Override
     public void run() {
-        //plugin.getServer().broadcastMessage("DayTimeVote: Checking Time => " + (overWorld.getTime() >= nightTime ? "It's Nighttime" : "It's Daytime") + " (" + overWorld.getTime() + " ticks).");
-        Bukkit.getPluginManager().callEvent(new DayNightEvent(overWorld.getTime() < nightTime));
+        if (plugin instanceof DebuggablePlugin  && ((DebuggablePlugin) plugin).isInDebugMode()) {
+            plugin.getServer().broadcastMessage("DayTimeVote: Checking Time -> " + (overWorld.getTime() >= nightTime ? "It's Nighttime" : "It's Daytime") + " (" + overWorld.getTime() + " ticks).");
+        }
+
+        boolean isDay = overWorld.getTime() < nightTime;
+        if (this.isDay != isDay) {
+            this.isDay = isDay;
+            Bukkit.getPluginManager().callEvent(new DayNightEvent(isDay));
+        }
     }
 }

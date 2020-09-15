@@ -5,11 +5,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-public final class DaytimeVote extends JavaPlugin
+public final class DaytimeVote extends JavaPlugin implements DebuggablePlugin
 {
+    private boolean isInDebugMode = false;
 
     @Override
     public void onEnable() {
+        isInDebugMode = false;
         CommandExecutor commandExecutor = new DaytimeVoteCommandExecutor(this);
         //Create daytime event listener
         DaytimeListener daytimeListener = new DaytimeListener(this);
@@ -27,7 +29,7 @@ public final class DaytimeVote extends JavaPlugin
 
         BukkitScheduler scheduler = getServer().getScheduler();
         //Schedule DaytimeTask to run 60 seconds (1200 / 20), starting immediately.
-        scheduler.scheduleSyncRepeatingTask(this, new DaytimeTask(this, Utils.GetWorldByEnvironment(this, World.Environment.NORMAL)), 0L, 1200L);
+        scheduler.scheduleSyncRepeatingTask(this, new DaytimeTask(this, Utils.GetWorldByEnvironment(this, World.Environment.NORMAL)), 0L, 1200L/4);
     }
 
     @Override
@@ -36,4 +38,13 @@ public final class DaytimeVote extends JavaPlugin
         // No need to do anything on Disable for this.
     }
 
+    @Override
+    public boolean isInDebugMode() {
+        return isInDebugMode;
+    }
+
+    @Override
+    public void setIsInDebugMode(boolean value) {
+        isInDebugMode = value;
+    }
 }
