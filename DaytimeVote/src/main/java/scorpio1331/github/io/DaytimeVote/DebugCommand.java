@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Arrays;
 import java.util.List;
 
-public class DebugCommand implements Command {
+public class DebugCommand implements ICommand {
 
     private static class AcceptedArguments {
         public static final String Enable = "Enable";
@@ -16,7 +16,7 @@ public class DebugCommand implements Command {
         public static final List<String> AcceptableArguments = Arrays.asList(Enable, Disable, Query);
     }
 
-    private DebuggablePlugin plugin;
+    private IDebuggablePlugin plugin;
 
     @Override
     public String getName() {
@@ -25,8 +25,8 @@ public class DebugCommand implements Command {
 
     @Override
     public void setPlugin(JavaPlugin plugin) {
-        if (plugin instanceof DebuggablePlugin) {
-            this.plugin = (DebuggablePlugin) plugin;
+        if (plugin instanceof IDebuggablePlugin) {
+            this.plugin = (IDebuggablePlugin) plugin;
         }
         else {
             this.plugin = null;
@@ -91,7 +91,7 @@ public class DebugCommand implements Command {
             final boolean enableDebugMode = givenArg.equalsIgnoreCase(AcceptedArguments.Enable);
             if (this.plugin.isInDebugMode() != enableDebugMode) {
                 this.plugin.setIsInDebugMode(enableDebugMode);
-                sender.sendMessage(String.format("DayTimeVote: %s Debugging mode.", this.plugin.isInDebugMode() ? "Enabled" : "Disabled"));
+                this.plugin.SendDebugMessage(String.format("DayTimeVote: %s Debugging mode.", this.plugin.isInDebugMode() ? "Enabled" : "Disabled"));
             }
             else {
                 sender.sendMessage(String.format("DayTimeVote: Debug mode is already %s.", this.plugin.isInDebugMode() ? "Enabled" : "Disabled"));

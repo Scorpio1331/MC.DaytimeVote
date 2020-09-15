@@ -6,13 +6,13 @@ public enum Commands
     NightPlease(new NightPleaseCommand()),
     Debug(new DebugCommand());
 
-    private Command command;
+    private ICommand command;
 
-    Commands(Command command) {
+    Commands(ICommand command) {
         this.command = command;
     }
 
-    public Command getCommand() {
+    public ICommand getCommand() {
         return command;
     }
 

@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
-public abstract class SetTimeVoteCommand implements Command, IHandlesDayNightCycle
+public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCycle
 {
     private static class AcceptedArguments {
         public static final String Yes = "Yes";
@@ -157,8 +157,12 @@ public abstract class SetTimeVoteCommand implements Command, IHandlesDayNightCyc
 
     @Override
     public void HandleDaytimeEvent(DayNightEvent event) {
-        if (plugin instanceof DebuggablePlugin  && ((DebuggablePlugin) plugin).isInDebugMode()) {
-            plugin.getServer().broadcastMessage(String.format("DayTimeVote: %s command Got HandleDaytimeEvent -> %s", name, event.isDay() ? "it's Day" : "it's Night"));
+        if (plugin instanceof IDebuggablePlugin) {
+            IDebuggablePlugin debuggablePlugin = (IDebuggablePlugin) plugin;
+            if (debuggablePlugin.isInDebugMode())
+            {
+                debuggablePlugin.SendDebugMessage(String.format("DayTimeVote: %s command Got HandleDaytimeEvent -> %s", name, event.isDay() ? "it's Day" : "it's Night"));
+            }
         }
         isDay = event.isDay();
     }

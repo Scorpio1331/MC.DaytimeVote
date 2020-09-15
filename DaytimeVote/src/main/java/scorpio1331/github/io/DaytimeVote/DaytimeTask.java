@@ -18,8 +18,12 @@ public class DaytimeTask implements Runnable {
     //Dispatch event to any DayNightEvent listeners
     @Override
     public void run() {
-        if (plugin instanceof DebuggablePlugin  && ((DebuggablePlugin) plugin).isInDebugMode()) {
-            plugin.getServer().broadcastMessage("DayTimeVote: Checking Time -> " + (overWorld.getTime() >= nightTime ? "It's Nighttime" : "It's Daytime") + " (" + overWorld.getTime() + " ticks).");
+        if (plugin instanceof IDebuggablePlugin) {
+            IDebuggablePlugin debuggablePlugin = (IDebuggablePlugin) plugin;
+            if (debuggablePlugin.isInDebugMode())
+            {
+                debuggablePlugin.SendDebugMessage(String.format("DayTimeVote: Checking Time -> %s (%d ticks).", overWorld.getTime() >= nightTime ? "It's Nighttime" : "It's Daytime", overWorld.getTime()));
+            }
         }
 
         boolean isDay = overWorld.getTime() < nightTime;

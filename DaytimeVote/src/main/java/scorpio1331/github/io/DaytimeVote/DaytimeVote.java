@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-public final class DaytimeVote extends JavaPlugin implements DebuggablePlugin
+public final class DaytimeVote extends JavaPlugin implements IDebuggablePlugin
 {
     private boolean isInDebugMode = false;
 
@@ -46,5 +46,14 @@ public final class DaytimeVote extends JavaPlugin implements DebuggablePlugin
     @Override
     public void setIsInDebugMode(boolean value) {
         isInDebugMode = value;
+    }
+
+    @Override
+    public void SendDebugMessage(String message) {
+        getServer().getOnlinePlayers()
+                .stream()
+                .filter(p -> p.hasPermission(Permissions.CanDebug.getPermissionName()))
+                .forEach(p -> p.sendMessage(message));
+        getServer().getConsoleSender().sendMessage(message);
     }
 }
