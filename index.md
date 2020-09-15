@@ -1,37 +1,55 @@
-## Welcome to GitHub Pages
+## Daytime / Night-time Vote plugin for Minecraft
 
-You can use the [editor on GitHub](https://github.com/Scorpio1331/MC.DaytimeVote/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Daytime
+Players can vote during the night to set it to daytime.
+Voting starts when the first player activates the command **Daypls** and will reset when it next becomes daytime.
+#### To start a vote simply type
+> _/Daypls_ **or** _/Daypls Yes_
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Players can vote from any world and can change their vote if they change their mind.
+> _/Daypls No_
 
-### Markdown
+### Night-time
+Players can vote during the day to set it to night-time.
+Voting starts when the first player activates the command **Nightpls** and will reset when it next becomes night-time.
+#### To start a vote simply type
+> _/Nightpls_ **or** _/Nightpls Yes_
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Just like the Daytime vote, players can vote from any world and can change their vote if they change their mind.
+> _/Nightpls No_
 
-```markdown
-Syntax highlighted code block
+#### Daytime and Night-time voting
+Both votes requires a Yes from at-least half the players currently on the **Overworld** to change the time.
+Players can query whether there is an on-going vote and how many votes it has by typing the following:
+> _/Daypls Query_
+<br/>_/Nightpls Query_
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+### Debugging
+Players with the _daytimevote.canDebug_ permission can enable / disable the plugins debug mode.
+When debug mode is enabled debug messages will be sent to players with the _daytimevote.canDebug_ permission as well as the console.
+#### To enable / disable debug mode type
+> _/DebugDaytimevote Enable_ **or** _/DebugDaytimevote Disable_
 
-1. Numbered
-2. List
+Players with permission can query whether debugging is enabled by typing the following:
+> _/DebugDaytimevote Query_
 
-**Bold** and _Italic_ and `Code` text
+### Permissions
+Below is a list of permissions and what they are required for:
+- _daytimevote.*_
+  - Gives access to all DaytimeVote commands
+  - Defaults to players with operator status (_op_)
+- _daytimevote.canVote_
+  - Allows players to start and participate in votes for daytime / night-time
+  - Defaults to all players
+- _daytimevote.canDebug_
+  - Allows players to enable / disable DaytimeVote debugging mode
+  - Defaults to players with operator status (_op_)
 
-[Link](url) and ![Image](src)
-```
+### Current Release
+The current release is [Version 2.1](https://github.com/Scorpio1331/MC.DaytimeVote/releases/latest)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+View other releases [here](https://github.com/Scorpio1331/MC.DaytimeVote/releases)
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Scorpio1331/MC.DaytimeVote/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Install
+To install, put the DaytimeVote.jar into your plugin's folder.
