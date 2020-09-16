@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Daytime / Night-time Vote plugin for Minecraft | Daytime Vote</title>
+<meta property="og:title" content="Daytime / Night-time Vote plugin for Minecraft" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Daytime Vote plugin for Minecraft" />
+<meta property="og:description" content="Daytime Vote plugin for Minecraft" />
+<link rel="canonical" href="https://scorpio1331.github.io/MC.DaytimeVote/" />
+<meta property="og:url" content="https://scorpio1331.github.io/MC.DaytimeVote/" />
+<meta property="og:site_name" content="MC.DaytimeVote" />
+<script type="application/ld+json">
+{"@type":"WebSite","headline":"Daytime / Night-time Vote plugin for Minecraft","url":"https://scorpio1331.github.io/MC.DaytimeVote/","description":"Daytime Vote plugin for Minecraft","name":"MC.DaytimeVote","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/MC.DaytimeVote/assets/css/style.css?v=98b1b31c7ed4d6a4f5af4b49b3194f82989b449c">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Daytime Vote</h1>
+      <h2 class="project-tagline">Daytime voting plugin for Minecraft</h2>
+      
+        <a href="https://github.com/Scorpio1331/MC.DaytimeVote" class="btn">View on GitHub</a>
+        <a href="https://github.com/Scorpio1331/MC.DaytimeVote/releases/latest/download/DaytimeVote.jar" class="btn">Download .jar</a>
+        <a href="https://github.com/Scorpio1331/MC.DaytimeVote/zipball/master" class="btn">Download .zip</a>      
+      
+    </section>
+
+    <section class="main-content">
+      <h2 id="daytime--night-time-vote-plugin-for-minecraft">Daytime / Night-time Vote plugin for Minecraft</h2>
+
+<h3 id="daytime">Daytime</h3>
+<p>Players can vote during the night to set it to daytime.
+Voting starts when the first player activates the command <strong>Dayplease</strong> (<em>or Daypls</em>) and will reset when it next becomes daytime.</p>
+<h4 id="to-start-a-vote-simply-type">To start a vote simply type</h4>
+<blockquote>
+  <p><em>/Dayplease <strong>or</strong> _/Dayplease Yes</em></p>
+</blockquote>
+
+<p>Players can vote from any world and can change their vote if they change their mind.</p>
+<blockquote>
+  <p><em>/Dayplease No</em></p>
+</blockquote>
+
+<h3 id="night-time">Night-time</h3>
+<p>Players can vote during the day to set it to night-time.
+Voting starts when the first player activates the command <strong>Nightplease</strong> (<em>or Nightpls</em>) and will reset when it next becomes night-time.</p>
+<h4 id="to-start-a-vote-simply-type-1">To start a vote simply type</h4>
+<blockquote>
+  <p><em>/Nightplease</em> <strong>or</strong> <em>/Nightplease Yes</em></p>
+</blockquote>
+
+<p>Just like the Daytime vote, players can vote from any world and can change their vote if they change their mind.</p>
+<blockquote>
+  <p><em>/Nightplease No</em></p>
+</blockquote>
+
+<h4 id="daytime-and-night-time-voting">Daytime and Night-time voting</h4>
+<p>Both votes requires a Yes from at-least half the players currently on the <strong>Overworld</strong> to change the time.
+Players can query whether there is an on-going vote and how many votes it has by typing the following:</p>
+<blockquote>
+  <p><em>/Dayplease Query</em>
+<br /><em>/Nightplease Query</em></p>
+</blockquote>
+
+<h3 id="debugging">Debugging</h3>
+<p>Players with the <em>daytimevote.canDebug</em> permission can enable / disable the plugins debug mode with the command <strong>DebugDaytimevote</strong> (<em>or /ddv</em>).
+When debug mode is enabled debug messages will be sent to players with the <em>daytimevote.canDebug</em> permission as well as the console.</p>
+<h4 id="to-enable--disable-debug-mode-type">To enable / disable debug mode type</h4>
+<blockquote>
+  <p><em>/DebugDaytimevote Enable</em> <strong>or</strong> <em>/DebugDaytimevote Disable</em></p>
+</blockquote>
+
+<p>Players with permission can query whether debugging is enabled by typing the following:</p>
+<blockquote>
+  <p><em>/DebugDaytimevote Query</em></p>
+</blockquote>
+
+<h3 id="modifying-the-config">Modifying the config</h3>
+<p>Players with the <em>daytimevote.canChangeConfig</em> permission can modify the plugin’s config file with the command <strong>changeDaytimeVoteConfig</strong> (<em>or /cdvc</em>).
+Players can change the calculation used to determine how many players are required to pass a vote or explicitly set the number.</p>
+<h4 id="to-modify-the-number-of-required-votes-for-daytime--night-time">To modify the number of required votes for daytime / night-time</h4>
+<blockquote>
+  <p><em>/changeDaytimeVoteConfig Day</em> <strong>or</strong> <em>/changeDaytimeVoteConfig Night</em> <strong>or</strong> <em>/changeDaytimeVoteConfig All</em></p>
+</blockquote>
+
+<p>Players with permission can query the currently saved settings by typing the following:</p>
+<blockquote>
+  <p><em>/changeDaytimeVoteConfig Query</em></p>
+</blockquote>
+
+<h3 id="permissions">Permissions</h3>
+<p>Below is a list of permissions and what they are required for:</p>
+<ul>
+  <li><em>daytimevote.*</em>
+    <ul>
+      <li>Gives access to all DaytimeVote commands</li>
+      <li>Defaults to players with operator status (<em>op</em>)</li>
+    </ul>
+  </li>
+  <li><em>daytimevote.canVote</em>
+    <ul>
+      <li>Allows players to start and participate in votes for daytime / night-time</li>
+      <li>Defaults to all players</li>
+    </ul>
+  </li>
+  <li><em>daytimevote.canDebug</em>
+    <ul>
+      <li>Allows players to enable / disable DaytimeVote debugging mode</li>
+      <li>Defaults to players with operator status (<em>op</em>)</li>
+    </ul>
+  </li>
+  <li><em>daytimevote.canChangeConfig</em>
+    <ul>
+      <li>Allows players to modify the DaytimeVote config</li>
+      <li>Defaults to players with operator status (<em>op</em>)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="current-release">Current Release</h3>
+<p>The current release is <a href="https://github.com/Scorpio1331/MC.DaytimeVote/releases/latest">Version 3.0</a></p>
+
+<p>View other releases <a href="https://github.com/Scorpio1331/MC.DaytimeVote/releases">here</a></p>
+
+<h3 id="install">Install</h3>
+<p>To install, put the DaytimeVote.jar into your plugin’s folder.</p>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/Scorpio1331/MC.DaytimeVote">Daytime Vote</a> is maintained by <a href="https://github.com/Scorpio1331">Scorpio1331</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  </body>
+</html>
