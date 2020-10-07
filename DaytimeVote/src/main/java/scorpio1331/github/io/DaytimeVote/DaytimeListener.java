@@ -16,6 +16,10 @@ public class DaytimeListener implements Listener
         EventListeners = new ArrayList<>();
     }
 
+    public List<IHandlesDayNightCycle> getEventListeners() {
+        return EventListeners;
+    }
+
     public void AddEventListener(IHandlesDayNightCycle listener) {
         if (!EventListeners.contains(listener))
         {
@@ -23,11 +27,8 @@ public class DaytimeListener implements Listener
         }
     }
 
-    public void RemoveEventListener(IHandlesDayNightCycle listener) {
-        if (EventListeners.contains(listener))
-        {
-            EventListeners.remove(listener);
-        }
+    public boolean RemoveEventListener(IHandlesDayNightCycle listener) {
+        return EventListeners.remove(listener);
     }
 
     //Listen for any DayNightEvents that are dispatched

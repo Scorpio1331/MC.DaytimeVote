@@ -6,7 +6,7 @@
 
     <groupId>scorpio1331.github.io</groupId>
     <artifactId>DaytimeVote</artifactId>
-    <version>2.2</version>
+    <version>4.0</version>
     <build>
         <plugins>
             <plugin>
@@ -29,9 +29,20 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version><!--change this value depending on the version or use LATEST-->
+            <version>LATEST</version>
             <type>jar</type>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.5.10</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -26,6 +26,11 @@ public class NightPleaseCommand extends SetTimeVoteCommand
     protected String GetIsAbsolutePath() { return ConfigurationSettings.NumberOfPlayersRequiredForVote.NighttimeValueIsAbsolute;  }
 
     @Override
+    protected boolean ShouldResetSleepTimes() {
+        return false;
+    }
+
+    @Override
     public void HandleDaytimeEvent(DayNightEvent event) {
         if (event.isNight()) {
             SetIsEnabled(false);

@@ -1,9 +1,11 @@
 package scorpio1331.github.io.DaytimeVote;
 
+import org.bukkit.Statistic;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
@@ -52,6 +54,8 @@ public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCy
 
     protected abstract String GetRequiredCountPath();
     protected abstract String GetIsAbsolutePath();
+
+    protected abstract boolean ShouldResetSleepTimes();
 
     @Override
     public Boolean ValidateCommand(CommandSender sender, Command cmd, String label, String[] args, JavaPlugin plugin) {
@@ -158,6 +162,11 @@ public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCy
                 if (count >= requiredCount) {
                     overWorld.setTime(GetSetTime());
                     plugin.getServer().broadcastMessage(String.format("DayTimeVote: Set time to %s.", GetTimeName()));
+
+                    if (ShouldResetSleepTimes()) {
+                        ResetPlayersLastSleepTime(plugin);
+                    }
+
                     playerVotes = new HashMap<>();
                 }
             }
@@ -168,6 +177,31 @@ public abstract class SetTimeVoteCommand implements ICommand, IHandlesDayNightCy
         }
 
         return true;
+    }
+
+    private void ResetPlayersLastSleepTime(JavaPlugin plugin) {
+        playerVotes.forEach((playerKey, votedYes) ->
+        {
+            if (votedYes) {
+                final Player currentPlayer = plugin.getServer().getPlayer(playerKey);
+
+                if (plugin instanceof IDebuggablePlugin) {
+                    IDebuggablePlugin debuggablePlugin = (IDebuggablePlugin) plugin;
+                    if (debuggablePlugin.isInDebugMode())
+                    {
+                        if (currentPlayer.hasPermission(Permissions.CanDebug.getPermissionName()))
+                        {
+                            int playerTimeSinceRest = currentPlayer.getStatistic(Statistic.TIME_SINCE_REST);
+                            currentPlayer.sendMessage(String.format("You last slept %d ticks ago", playerTimeSinceRest));
+                        }
+
+                        debuggablePlugin.SendDebugMessage("Resetting player last slept time");
+                    }
+                }
+
+                currentPlayer.setStatistic(Statistic.TIME_SINCE_REST, 0);
+            }
+        });
     }
 
     @Override
