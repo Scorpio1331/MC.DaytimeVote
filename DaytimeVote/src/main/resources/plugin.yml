@@ -1,6 +1,6 @@
 name: DaytimeVote
 main: scorpio1331.github.io.DaytimeVote.DaytimeVote
-version: "3.0"
+version: "4.0"
 description: "Plugin to allow players to vote on setting time to day or night."
 api-version: "1.16"
 author: "scorpio1331"
